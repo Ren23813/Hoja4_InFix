@@ -5,7 +5,7 @@ import java.io.IOException;
 public class Traductor <T> {
     private String lista [] = null;
 
-        public void leerDatosArchivo(String archivo){
+        public String[] leerDatosArchivo(String archivo){
         int contador = 0;
         try(BufferedReader br = new BufferedReader(new FileReader(archivo))){
             String line;
@@ -15,13 +15,12 @@ public class Traductor <T> {
                 contador += 1;
                 
             }
-
+            return lista;
         }
         catch (IOException e){
             e.printStackTrace();
-
-        }
-
+            return null;
+        }        
     }
 
     public T Traducir(T lista []){
