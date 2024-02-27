@@ -45,8 +45,29 @@ public class Main {
 
                     break;
                 case "3":
-                    stackType = "Lista";
-                    System.out.println("Tipo de stack seleccionado: " + stackType);
+
+                    System.out.println("\n     | Ingrese el tipo de Lista que desea:");
+                    System.out.println("     | 1. Encadenada (Simple)");
+                    System.out.println("     | 2. Doblemente Encadenada (Double)");
+                    System.out.println("     |");
+                    System.out.print("     | Opción: ");
+
+                    String listOp = scan.nextLine();
+                    switch (listOp) {
+                        case "1":
+                            stackType = "Lista_Simple";
+                            System.out.println("       Tipo de stack seleccionado: " + stackType);
+
+                            break;
+                        case "2":
+                            stackType = "Lista_Double";
+                            System.out.println("       Tipo de stack seleccionado: " + stackType);
+
+                            break;
+                        default:
+                            System.out.println("\nLa opción ingresada no es válida.");
+                            break;
+                    }
 
                     break;
 
