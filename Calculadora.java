@@ -6,7 +6,7 @@ public class Calculadora {
     private static final Calculadora instance = new Calculadora();
 
     private StackInterface<Integer> pila;
-    private Traductor traductor;
+    private Traductor <String> traductor;
 
     // CustomStack<Integer> pila = new CustomStack<>();
 
@@ -24,7 +24,9 @@ public class Calculadora {
             this.pila = new CustomStack<>();
         } else if (implementation.equals("-------- VectorStack")) {
             this.pila = new VectorStack<>();
-        } else {
+        } else if (implementation.equals("ArrayList")){
+            this.pila = new ImpArrayList<>();
+            } else {
             throw new IllegalArgumentException("La implementación de stack no es válida. ");
         }
     }
@@ -44,7 +46,7 @@ public class Calculadora {
         String[] expresiones = traductor.leerDatosArchivo(archivo);
 
         if (expresiones == null) {
-            System.out.println("No se pudo.");
+            System.out.println("No se pudo leer correctamente.");
             return;
         }
 
@@ -100,7 +102,7 @@ public class Calculadora {
                             return 0;
                         }
 
-                        pila.push(operando1 / operando2);
+                        pila.push(operando2 / operando1);
                         break;
 
                     case "*":
