@@ -1,12 +1,14 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
 public class Traductor<T> {
-    private String lista[] = null;
+    private List<String> lista;
 
     private Map<Character, Integer> precedencia;
 
@@ -19,20 +21,20 @@ public class Traductor<T> {
     }
 
     public String[] leerDatosArchivo(String archivo) {
-        int contador = 0;
+        List<String> lista = new ArrayList<>(); // Cambio: definir lista como ArrayList local
+
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             String line;
 
             while ((line = br.readLine()) != null) {
-                lista[contador] = line;
-                contador += 1;
-
+                lista.add(line); // Agregar cada línea al ArrayList
             }
-            return lista;
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+
+        // Convertir el ArrayList a un array de strings
+        return lista.toArray(new String[0]);
     }
 
     public T Traducir(T lista[]) {
@@ -42,6 +44,8 @@ public class Traductor<T> {
     public String infixpaPostfix(String expresion) {
         StringBuilder resultado = new StringBuilder();
         Stack<Character> operadores = new Stack<>();
+
+        expresion = expresion.replaceAll("\\s+", "");
 
         for (char caracter : expresion.toCharArray()) {
             if (esOperando(caracter)) {
