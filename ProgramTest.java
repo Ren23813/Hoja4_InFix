@@ -30,7 +30,7 @@ public class ProgramTest {
     public void divisionBienHecha(){
         Calculadora calculadora = Calculadora.getInstance();
         
-        int comprobar = calculadora.expresionEvaluar("82/");
+        int comprobar = calculadora.expresionEvaluar("28/");
         assertEquals(comprobar,4);
     }
 

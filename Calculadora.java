@@ -76,7 +76,6 @@ public class Calculadora {
 
     public int expresionEvaluar(String expresion) {
 
-        // expresion = expresion.replaceAll("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)", " ");
         String[] data = expresion.split(""); // Se dividen las lineas del .txt para que por cada caractér se analice la
                                              // siguiente inmediata entrada
 
