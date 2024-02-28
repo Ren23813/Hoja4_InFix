@@ -1,6 +1,7 @@
 public class Node <T> {
 T value;
 Node <T> next;
+Node <T> prev;
 
 /**
  * Constructor de la clase.
@@ -41,5 +42,17 @@ public void setValue(T newValue){
  */
 public void setNext(Node <T>n){
     next = n;
+}
+
+public void constructDoble(T val){
+    this.value = val;
+    this.next = null;
+    this.prev = null;
+}
+public Node<T> getPrevious() {
+    return prev;
+}
+public void setPrevious(Node<T> previous) {
+    this.prev = previous;
 }
 }
