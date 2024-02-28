@@ -65,7 +65,8 @@ public class Main {
                         case "2":
                             stackType = "Lista_Double";
                             System.out.println("       Tipo de stack seleccionado: " + stackType);
-
+                            calculadora.setStackImplementation(stackType);                            
+                            calculadora.showResultado("5 3 +");
                             break;
                         default:
                             System.out.println("\nLa opción ingresada no es válida.");

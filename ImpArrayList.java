@@ -6,8 +6,6 @@ import java.util.ArrayList;
 public class ImpArrayList <T> implements StackInterface <T> {
 
     ArrayList <T> arrayList1 = new ArrayList<>();
-    private Calculadora calculator = Calculadora.getInstance();
-
 
     @Override
     public void push(T value) {

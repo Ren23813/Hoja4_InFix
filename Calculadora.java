@@ -26,7 +26,9 @@ public class Calculadora {
             this.pila = new VectorStack<>();
         } else if (implementation.equals("ArrayList")){
             this.pila = new ImpArrayList<>();
-            } else {
+        } else if (implementation.equals("Lista_Double")){
+            Object pila = new ListaDoble<>();
+        } else {
             throw new IllegalArgumentException("La implementación de stack no es válida. ");
         }
     }
