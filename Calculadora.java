@@ -55,7 +55,7 @@ public class Calculadora {
         } else if (implementation.equals("Lista_Simple")) {
             // colocar el de simple
         } else if (implementation.equals("Lista_Double")) {
-            // same para double
+            Object pila = new ListaDoble<>();
         } else {
             throw new IllegalArgumentException("La implementación de stack no es válida. ");
         }
