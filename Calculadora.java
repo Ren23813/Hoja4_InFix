@@ -76,8 +76,9 @@ public class Calculadora {
 
     public int expresionEvaluar(String expresion) {
 
-        String[] data = expresion.split(" "); // Se dividen las lineas del .txt para que por cada espacio se analice la
-                                              // siguiente inmediata entrada
+        // expresion = expresion.replaceAll("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)", " ");
+        String[] data = expresion.split(""); // Se dividen las lineas del .txt para que por cada caractér se analice la
+                                             // siguiente inmediata entrada
 
         for (String datos : data) {
 
@@ -93,14 +94,14 @@ public class Calculadora {
                     return 0;
                 }
 
-                int operando1 = pila.pop();
                 int operando2 = pila.pop();
+                int operando1 = pila.pop();
 
                 switch (datos) {
 
                     case "+":
 
-                        pila.push(operando1 + operando2);
+                        pila.push(operando2 + operando1);
                         break;
 
                     case "-":

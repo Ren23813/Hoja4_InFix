@@ -14,9 +14,9 @@ public class Main {
 
         // Cambiar a vectorStack
         // calculadora.setStackImplementation("VectorStack");
-        System.out.println("\nUsando VectorStack:");
-        calculadora.showResultado("5 3 +");
-        calculadora.showResultado("8 2 /");
+        // System.out.println("\nUsando VectorStack:");
+        // calculadora.showResultado("5 3 +");
+        // calculadora.showResultado("8 2 /");
 
         String stackType = null;
 
