@@ -53,7 +53,7 @@ public class Calculadora {
         } else if (implementation.equals("ArrayList")) {
             this.pila = new ImpArrayList<>();
         } else if (implementation.equals("Lista_Simple")) {
-            // colocar el de simple
+            Object pila = new ListaUna<>();
         } else if (implementation.equals("Lista_Double")) {
             Object pila = new ListaDoble<>();
         } else {
