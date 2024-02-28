@@ -1,4 +1,3 @@
-
 import java.util.Stack;
 
 public class Calculadora {
@@ -6,60 +5,71 @@ public class Calculadora {
     private static final Calculadora instance = new Calculadora();
 
     private StackInterface<Integer> pila;
-    private Traductor <String> traductor;
+    private Traductor traductor;
 
     // CustomStack<Integer> pila = new CustomStack<>();
 
     private Calculadora() {
-        this.pila = new CustomStack();
+        this.pila = new CustomStack<>();
+        this.traductor = new Traductor();
     }
 
     public static Calculadora getInstance() {
         return instance;
     }
 
+    // --------------------------------------------------------------------
+    String archivo = "datos.txt";
+
+    public void processExpresiones(String archivo, String stackType) {
+        String[] expresiones = traductor.leerDatosArchivo(archivo);
+
+        if (expresiones == null) {
+            System.out.println("El archivo no pudo ser procesado.");
+            return;
+        }
+
+        // se cambia la implementación del stack según sea el caso
+        setStackImplementation(stackType);
+
+        for (String expresion : expresiones) {
+            String expresionPostfix = traductor.infixpaPostfix(expresion);
+            int resultado = expresionEvaluar(expresionPostfix);
+            System.out.println("\n- Expresión infix: " + expresion);
+            System.out.println("- Expresión postfix: " + expresionPostfix);
+            System.out.println("\n\nResultado : " + resultado);
+            // System.out.println(" Resulatado de " + expresion + " : " + resultado);
+
+        }
+    }
+    // -----------------------------------------------------------------------------------------
+
     // cambiar la implementación del stack
     public void setStackImplementation(String implementation) {
-        if (implementation.equals("------ CustomStack")) {
+        if (implementation.equals("CustomStack")) {
             this.pila = new CustomStack<>();
-        } else if (implementation.equals("-------- VectorStack")) {
+        } else if (implementation.equals("Vector")) {
             this.pila = new VectorStack<>();
-        } else if (implementation.equals("ArrayList")){
+        } else if (implementation.equals("ArrayList")) {
             this.pila = new ImpArrayList<>();
-        } else if (implementation.equals("Lista_Double")){
-            Object pila = new ListaDoble<>();
+        } else if (implementation.equals("Lista_Simple")) {
+            // colocar el de simple
+        } else if (implementation.equals("Lista_Double")) {
+            // same para double
         } else {
             throw new IllegalArgumentException("La implementación de stack no es válida. ");
         }
     }
 
-    public void showResultado(String expresion) {
-        System.out.println("\nPila | Operación: ");
-
-        int resultado = expresionEvaluar(expresion);
-
-        System.out.println("   Resulatado de " + expresion + " : " + resultado);
-
-    }
-
     // -------------------------------
 
-    public void processExpresiones(String archivo) {
-        String[] expresiones = traductor.leerDatosArchivo(archivo);
-
-        if (expresiones == null) {
-            System.out.println("No se pudo leer correctamente.");
-            return;
-        }
-
-        // traducir y analize cada expresión
-        for (String expresion : expresiones) {
-            String expresionPostfix = traductor.infixpaPostfix(expresion);
-            int resultado = expresionEvaluar(expresionPostfix);
-            System.out.println("Expresión infix: " + expresion);
-            System.out.println("Expresión postfix: " + expresionPostfix);
-            System.out.println("Resultado: " + resultado);
-        }
+    public void showResultado(String expresion) {
+        // System.out.println("\nPila | Operación: ");
+        //
+        int resultado = expresionEvaluar(expresion);
+        //
+        System.out.println(" Resulatado de " + expresion + " : " + resultado);
+        //
     }
 
     // ---------------------------------------------------
@@ -124,7 +134,7 @@ public class Calculadora {
 
         // para determinar si es correcto el formato
         if (pila.size() != 1) {
-            System.out.println("Error del formato del archivo");
+            System.out.println("Error del formato.");
             return 0;
         }
 
