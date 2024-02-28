@@ -55,7 +55,7 @@ public class Calculadora {
         } else if (implementation.equals("Lista_Simple")) {
             // colocar el de simple
         } else if (implementation.equals("Lista_Double")) {
-            // same para double
+            Object pila = new ListaDoble<>();
         } else {
             throw new IllegalArgumentException("La implementación de stack no es válida. ");
         }
@@ -76,7 +76,7 @@ public class Calculadora {
 
     public int expresionEvaluar(String expresion) {
 
-        String[] data = expresion.split(" "); // Se dividen las lineas del .txt para que por cada espacio se analice la
+        String[] data = expresion.split(""); // Se dividen las lineas del .txt para que por cada espacio se analice la
                                               // siguiente inmediata entrada
 
         for (String datos : data) {
